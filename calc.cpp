@@ -68,8 +68,14 @@ double Calc::nextValue(stringstream& str) {
         number += str.get();
     }
 
-    while((c = str.peek()) && isalnum(c)){
-        number += str.get();
+    while((c = str.peek()) && (isalnum(c) || c == '.' || c == ',')){
+	if(c == ','){
+	    number += '.';
+	    str.get();
+	}
+	else {
+	    number += str.get();
+	}
     }
 
     double result = 0.0;

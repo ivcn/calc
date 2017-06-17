@@ -8,7 +8,6 @@
 
 class Calc {
 public:
-    Calc() {}
     void run();
     double compute(const std::string& str);
     double nextExpr(std::stringstream& str);

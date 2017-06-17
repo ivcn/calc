@@ -82,10 +82,26 @@ TEST_CASE("Dividing with negative  numbers","") {
     REQUIRE(calc.compute("-500 / -10") == 50);
 }
 
-TEST_CASE("Non-integer computations","") {
+TEST_CASE("Simple non-integer computations","") {
     REQUIRE(calc.compute("5/4") == 1.25);
     REQUIRE(calc.compute("5.0 /4") == 1.25);
     REQUIRE(calc.compute("5/ 4.0") == 1.25);
     REQUIRE(calc.compute("5.0 / 4.0") == 1.25);
+
+    REQUIRE(calc.compute("5,5") == 5.5);
+    REQUIRE(calc.compute("5,5 *4") == 22);
+    REQUIRE(calc.compute("5,5* 4,0") == 22);
+    REQUIRE(calc.compute("5,5 * 4,0") == 22);
+    
+}
+
+TEST_CASE("Additive and multiplicative operators priority", "") {
+    REQUIRE(calc.compute("2 + 2 * 2") == 6);
+    REQUIRE(calc.compute("2 * 2 + 2") == 6);
+    REQUIRE(calc.compute("5,5 * 2.0 + 124 * 0.5") == 73);
+
+    REQUIRE(calc.compute("100.0/2 * 3") == 150);
+    REQUIRE(calc.compute("6/2/3") == 1);
+    REQUIRE(calc.compute("30.5*2-1") == 60);
 }
 
