@@ -6,15 +6,6 @@
 
 using namespace std;
 
-void Calc::run() {
-    string input;
-    while(getline(cin, input)) {
-        if(input == "q")
-            break;
-        double result = compute(input);
-    }
-}
-
 double Calc::compute(const string& s) {
     stringstream str(s);
     return nextExpr(str);
@@ -73,7 +64,8 @@ double Calc::nextValue(stringstream& str) {
         //negative number
         number += str.get();
     }
-
+    
+    //parse number
     while((c = str.peek()) && (isalnum(c) || c == '.' || c == ',')){
 	if(c == ','){
 	    number += '.';

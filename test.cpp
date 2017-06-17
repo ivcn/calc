@@ -91,8 +91,7 @@ TEST_CASE("Simple non-integer computations","") {
     REQUIRE(calc.compute("5,5") == 5.5);
     REQUIRE(calc.compute("5,5 *4") == 22);
     REQUIRE(calc.compute("5,5* 4,0") == 22);
-    REQUIRE(calc.compute("5,5 * 4,0") == 22);
-    
+    REQUIRE(calc.compute("5,5 * 4,0") == 22); 
 }
 
 TEST_CASE("Additive and multiplicative operators priority", "") {
