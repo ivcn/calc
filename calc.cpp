@@ -23,7 +23,7 @@ double Calc::compute(const string& s) {
 double Calc::nextExpr(stringstream& str) {
     double result = nextValue(str);
     char op;
-    while((op = str.get()) != EOF) {
+    while((op = str.get()) != EOF && op != ')') {
         if(op == ' ') {
             continue;
         }
@@ -58,6 +58,12 @@ double Calc::nextValue(stringstream& str) {
         str.get();
         continue;
     }
+    //if this is expression in parentheses, go in
+    if(c == '(') {
+	str.get();
+	return nextExpr(str);
+    }
+
     string number;
     if (c == '+') {
         //skip

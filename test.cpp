@@ -105,3 +105,9 @@ TEST_CASE("Additive and multiplicative operators priority", "") {
     REQUIRE(calc.compute("30.5*2-1") == 60);
 }
 
+TEST_CASE("Check working with parentheses", "") {
+    REQUIRE(calc.compute("(2+2)*2") == 8);
+    REQUIRE(calc.compute("2+(2+2)") == 6);
+    REQUIRE(calc.compute("(3,3+1.2)*(5,5-0.5)") == 22.5);
+    REQUIRE(calc.compute("(128+32) / (150 - 11 * 2)") == 1.25);
+}
