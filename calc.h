@@ -8,9 +8,9 @@
 
 class Calc {
 public:
-    void run();
     double compute(const std::string& str);
-    double nextExpr(std::stringstream& str);
+private:
+    double nextExpr(std::stringstream&& str);
     double nextValue(std::stringstream& str);
 };
 #endif //_CALC_H_

@@ -110,3 +110,9 @@ TEST_CASE("Check working with parentheses", "") {
     REQUIRE(calc.compute("(3,3+1.2)*(5,5-0.5)") == 22.5);
     REQUIRE(calc.compute("(128+32) / (150 - 11 * 2)") == 1.25);
 }
+
+TEST_CASE("", "") {
+    REQUIRE(calc.compute("-1+5-3") == 1);
+    REQUIRE(calc.compute("-10+(8*2.5)-(3/1,5)") == 8);
+    REQUIRE(calc.compute("1 + (2 * (2.5 + 2.5 + (3 - 2)))-(3 / 1.5)") == 11);
+}

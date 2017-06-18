@@ -1,20 +1,28 @@
 #include <iomanip>
 #include <iostream>
+#include <math.h>
 
 #include <calc.h>
 
-
-
+using namespace std;
 
 int main() {
     Calc calc;
-    std::string input;
-    std::cout << "Enter arithmetic expression. Enter 'q' for exit\n";
-    while(getline(std::cin, input)) {
+    string input;
+    double result = 0.0;
+    while(true) {
+        cout << "Enter arithmetic expression. Enter 'q' for exit\n";
+        getline(cin, input);
         if(input == "q")
             break;
-        double result = calc.compute(input);
-	std::cout << std::fixed << std::setprecision(2) << result << std::endl;
-	std::cout << "Enter arithmetic expression. Enter 'q' for exit\n";
+        try{
+            result = calc.compute(input);
+        }
+        catch(runtime_error ex) {
+            cerr << "Wrong input. " << ex.what() << endl;
+            continue;
+        }
+        double dummy;
+ 	    cout << fixed << (modf(result, &dummy) ? setprecision(2) : setprecision(0)) << result << endl;
     }
 }
