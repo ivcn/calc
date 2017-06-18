@@ -10,19 +10,20 @@ int main() {
     Calc calc;
     string input;
     double result = 0.0;
-    while(true) {
+    while (true) {
         cout << "Enter arithmetic expression. Enter 'q' for exit\n";
         getline(cin, input);
-        if(input == "q")
+        if (input == "q")
             break;
-        try{
+        try {
             result = calc.compute(input);
-        }
-        catch(runtime_error ex) {
+        } catch (runtime_error ex) {
             cerr << "Wrong input. " << ex.what() << endl;
             continue;
         }
         double dummy;
- 	    cout << fixed << (modf(result, &dummy) ? setprecision(2) : setprecision(0)) << result << endl;
+        cout << fixed
+             << (modf(result, &dummy) ? setprecision(2) : setprecision(0))
+             << result << endl;
     }
 }
